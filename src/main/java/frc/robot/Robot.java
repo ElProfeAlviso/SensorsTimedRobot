@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.TimedRobot; //Esta es la clase de un robot controla
 import edu.wpi.first.wpilibj.Timer;//Esta es la clase de un temporizador
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;//Esta es la clase de un controlador modelo victorSP por PWM
 import edu.wpi.first.wpilibj.PS4Controller;//Esta es la clase para usar un control de play4
+
 /**
  * The VM (Virtual Machine) is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -17,10 +18,12 @@ public class Robot extends TimedRobot {
 
   //Declaracion de Variables y objetos de controladores de motor.
 
-  private VictorSP leftMotor1 = new VictorSP(0);
-  private VictorSP leftMotor2 = new VictorSP(1);
-  private VictorSP rightMotor1 = new VictorSP(2);
-  private VictorSP rightMotor2 = new VictorSP(3);
+  private final VictorSP leftMotor1 = new VictorSP(0);
+  private final VictorSP leftMotor2 = new VictorSP(1);
+  private final VictorSP rightMotor1 = new VictorSP(2);
+  private final VictorSP rightMotor2 = new VictorSP(3);
+
+  
 
 
   //Declaracion de Joystick
@@ -104,17 +107,20 @@ public class Robot extends TimedRobot {
     //Control de robot tipo Arcade
 
     double speed = -joystick1.getLeftY() * 0.6; //Se le pone -1 para invertir el valor del joystick ya que adelante es negativo.
-    double turn = joystick1.getRightX() * 0.3;
+    double turn = joystick1.getRightX() * 0.6;
 
+    
+    
+  
     double left = speed + turn; //Ajusta la potencia segun el giro
     double right = speed - turn;//Ajusta la potencia segune el giro
-
+    
     //Se envia la velocidad a los controladores de cada motor.
     leftMotor1.set(left);
     leftMotor2.set(left);
     rightMotor1.set(right);
     rightMotor2.set(right);
-
+    
 
   }
   
